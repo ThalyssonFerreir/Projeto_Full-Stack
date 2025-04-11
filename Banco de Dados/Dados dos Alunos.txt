@@ -1,0 +1,9 @@
+alter table aluno add constraint fk_curso foreign key (curso_id) references curso(id);
+create table cursos_alunos(aluno_id int not null, curso_id int not null);
+alter table cursos_alunos add constraint fk_aluno foreign key (aluno_id) references aluno(id);
+alter table cursos_alunos add constraint fk_curso foreign key(curso_id) references curso(id);
+select * from curso c right join aluno a on c.id = a.curso_id order by c.id;
+
+select * from cursos_alunos ca
+inner join aluno a on ca.aluno_id = a.id
+inner join curso c on ca.cursos_id = c.id 
